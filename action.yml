@@ -20,15 +20,15 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: install additional packages
-      run: |
-        ## TODO: TO BE MOVED INTO PACKER
-        #To create a local Git repository instead, add Git 2.18 or higher to the PATH
-        add-apt-repository -y ppa:git-core/ppa
-        apt update
-        apt install -y git sudo
-        git --version
-      shell: bash
+    #- name: install additional packages
+    #  run: |
+    #    ## DONE: MOVED INTO PACKER
+    #    #To create a local Git repository instead, add Git 2.18 or higher to the PATH
+    #    add-apt-repository -y ppa:git-core/ppa
+    #    apt update
+    #    apt install -y git sudo
+    #    git --version
+    #  shell: bash
     - name: github issue workaround
       run: |
         #BUG: https://github.com/actions/runner/issues/863
