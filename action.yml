@@ -39,7 +39,7 @@ runs:
         cp -a /root/. $HOME/
       shell: bash
     - name: checkout repos
-      uses: myriad-actions/checkout-repos@v1
+      uses: myriad-actions/checkout-repos@main
       with:
         tools-repository: ${{ inputs.tools-repository }}
         tools-folder: ${{ inputs.tools-folder }}
