@@ -1,34 +1,14 @@
 name: 'initialize docker container environment '
 description: 'prepare the container to run the target script(s)'
 inputs:
-  tools-repository:
-    description: >
-      The path to tools repository
-      If not specifid, will use current respository name
-      appended with '_tools'. 
-    default: ${{ github.repository }}-tools
   github-pat:
     description: >
       Personal access token (PAT) used by actions/checkout@v2 
       to fetch the repository. Note that github token
       can be used only for the working directory. 
-  tools-folder: 
-    description: >
-     The folder name that holds the checkout files
-  tools-path:
-    description: 'The path to tools repository'
 runs:
   using: "composite"
   steps:
-    #- name: install additional packages
-    #  run: |
-    #    ## DONE: MOVED INTO PACKER
-    #    #To create a local Git repository instead, add Git 2.18 or higher to the PATH
-    #    add-apt-repository -y ppa:git-core/ppa
-    #    apt update
-    #    apt install -y git sudo
-    #    git --version
-    #  shell: bash
     - name: github issue workaround
       run: |
         #BUG: https://github.com/actions/runner/issues/863
@@ -38,10 +18,3 @@ runs:
         rm -f $HOME/.ssh/config
         cp -a /root/. $HOME/
       shell: bash
-    - name: checkout repos
-      uses: myriad-actions/checkout-repos@main
-      with:
-        tools-repository: ${{ inputs.tools-repository }}
-        tools-folder: ${{ inputs.tools-folder }}
-        tools-path: ${{ inputs.tools-path }}
-        github-pat: ${{ inputs.github-pat }}
