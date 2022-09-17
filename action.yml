@@ -1,11 +1,7 @@
 name: 'initialize docker container environment '
+
 description: 'prepare the container to run the target script(s)'
-inputs:
-  github-pat:
-    description: >
-      Personal access token (PAT) used by actions/checkout@v2 
-      to fetch the repository. Note that github token
-      can be used only for the working directory. 
+
 runs:
   using: "composite"
   steps:
