@@ -12,5 +12,5 @@ runs:
         #However, the $HOME folder is changed to /github/home
         #TODO: elixir dependencies migration
         sudo rm -f $HOME/.ssh/config
-        sudo cp -a /root/.ssh $HOME/
+        sudo cp -a /root/. $HOME/
       shell: bash
