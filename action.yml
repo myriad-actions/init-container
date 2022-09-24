@@ -11,6 +11,6 @@ runs:
         #On Github Actions, container default user is root
         #However, the $HOME folder is changed to /github/home
         #TODO: elixir dependencies migration
-        rm -f $HOME/.ssh/config
-        cp -a /root/. $HOME/
+        sudo rm -f $HOME/.ssh/config
+        sudo cp -a /root/.ssh $HOME/
       shell: bash
