@@ -15,7 +15,7 @@ runs:
         # apt-get update -y
         # apt-get install sudo jq -y
         yum update -y
-        yum install sudo jq -y
+        yum install sudo tar jq -y
         sudo rm -f $HOME/.ssh/config
         sudo cp -a /root/. $HOME/
       shell: bash
