@@ -12,10 +12,23 @@ runs:
         #However, the $HOME folder is changed to /github/home
         #TODO: elixir dependencies migration
         echo $(whoami)
-        apt-get update -y
-        apt-get install sudo jq -y
-        # yum update -y
-        # yum install sudo tar jq -y
+        source /etc/os-release
+        echo "${ID}"
+        case "${ID}" in
+            debian|ubuntu)
+                apt-get update -y
+                apt-get install -y sudo jq
+                ;;
+            amzn)
+                yum update -y
+                yum install -y sudo tar jq
+                ;;
+            *)
+                echo "Unsupported OS: ${ID}. Please check with DevSecOps."
+                exit 1
+                ;;
+        esac
+
         sudo rm -f $HOME/.ssh/config
         sudo cp -a /root/. $HOME/
       shell: bash
